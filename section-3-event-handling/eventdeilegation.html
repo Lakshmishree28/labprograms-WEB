@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event delegation</title>
+</head>
+<body>
+   <ul>
+    <li>prodect-1</li>
+    <li>product-2</li>
+   </ul> 
+   <button id="addProduct">Add Product</button>
+   <script>
+      const list=document.getElementById("list");
+      const addProduct=document.getElementById("addProduct");
+      let count=3;
+      //Event delegation
+      list.addEventListener('click',(event)=>{
+        if (event.target.tagName === 'LI'){
+            console.log(`you clicked: ${event.target.textContent}`);
+        }
+      });
+      // add products
+      addProduct.addEventListener('click',()=>{
+        const newProduct=document.createElement('li');
+        newProduct.textContent=`Product ${count++}`;
+        list.appendChild(newProduct);
+      });
+   </script>
+</body>
+</html>
